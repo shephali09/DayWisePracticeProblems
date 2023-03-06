@@ -1,36 +1,16 @@
 #!/bin/bash
 
-read -p "Enter a number (1, 10, 100, 1000, etc.): " num
+# Define the dictionary with numeric values
+declare -A my_dict=( [key1]=1 [key2]=2 [key3]=3 )
 
-case $num in
-    1)
-        echo "Unit: $num"
-        ;;
-    10)
-        unit=$((num % 10))
-        ten=$((num / 10))
-        echo "Unit: $unit"
-        echo "Ten: $ten"
-        ;;
-    100)
-        unit=$((num % 10))
-        ten=$(((num / 10) % 10))
-        hundred=$((num / 100))
-        echo "Unit: $unit"
-        echo "Ten: $ten"
-        echo "Hundred: $hundred"
-        ;;
-    1000)
-        unit=$((num % 10))
-        ten=$(((num / 10) % 10))
-        hundred=$(((num / 100) % 10))
-        thousand=$((num / 1000))
-        echo "Unit: $unit"
-        echo "Ten: $ten"
-        echo "Hundred: $hundred"
-        echo "Thousand: $thousand"
-        ;;
-    *)
-        echo "Invalid number"
-        ;;
-esac
+# Define an empty array to store the dictionary values
+my_array=()
+
+# Loop through the dictionary and add each value to the array
+for value in "${my_dict[@]}"; do
+    my_array+=("$value")
+done
+
+# Print the values in the array
+echo "Values in the array: ${my_array[@]}"
+
